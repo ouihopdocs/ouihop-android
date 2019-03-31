@@ -86,3 +86,12 @@ For a pedestrian to publish their destination in order for drivers to propose ri
 
 ## Fulfilling a pedestrian destination (driver)
 `PedestrianDestinationRequestInteractor` is responsible for listening to all created pedestrian destinations. The purpose is to use that pedestrian destination to propose a new trip to fulfil this pedestrian destination.
+
+## Requesting line rules (driver)
+`GetBusLinesInteractor` is responsible for retrieving lines for a certain group. The purpose is to reward drivers when they follow a certain order of waypoints that form a transportation line.
+
+Lines are related to different OuiHop groups. They can be retrieved for currently logged-in user.
+
+To retrieve lines for user, use the method `onAllBusLinesReady`. This will return an array of `OuiBusLine` objects that define lines.
+
+After retrieving lines, you can use `BusLinesTripInteractor` during trip and you should update location with `onLocationUpdated` method and you will get notified with `OnBusLineAwardRewardedListener`
